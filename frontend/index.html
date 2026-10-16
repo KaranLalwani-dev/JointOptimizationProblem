@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cable Ring Planner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">Cable Ring Planner <span>Honeywell PS4</span></div>
+  <div class="controls">
+    <label>Split
+      <select id="split"><option value="">all</option></select>
+    </label>
+    <label>Plan id
+      <input id="planId" type="text" inputmode="numeric" placeholder="e.g. 14433" size="9" autocomplete="off">
+    </label>
+    <button id="btnLoad" class="ghost">Load</button>
+    <button id="btnRandom" class="ghost">Random</button>
+    <button id="btnUploadList" class="ghost" title="One JSON file that holds many plans: a list, or {&quot;plans&quot;: [...]} (tools/export_plans.py --bundle)">Upload plan list</button>
+    <button id="btnUploadOne" class="ghost" title="One plan as a JSON file (tools/export_plans.py); you may pick several files at once">Upload single plan</button>
+    <input id="fileInput" type="file" accept=".json,application/json" multiple hidden>
+    <span class="sep"></span>
+    <label>Time limit (s)
+      <input id="seconds" type="number" min="1" max="300" value="30" style="width:64px">
+    </label>
+    <label>Link rule
+      <select id="linkSet"><option value="physical">physical (default)</option><option value="helper">helper (door rule only)</option></select>
+    </label>
+    <button id="btnSolve" class="primary" disabled>Solve</button>
+    <span class="sep"></span>
+    <button id="btnJson" class="ghost" disabled>JSON</button>
+    <button id="btnSvg" class="ghost" disabled>SVG</button>
+    <button id="btnPng" class="ghost" disabled>PNG</button>
+  </div>
+</header>
+<div id="banner" class="banner" hidden></div>
+<main>
+  <section id="stage">
+    <div id="headline"></div>
+    <div id="canvas"><div id="empty">Load a plan (type an id or press Random), then press Solve.</div></div>
+    <div class="hint">Mouse wheel zooms, drag moves, double-click resets.</div>
+  </section>
+  <aside id="side"><div id="browser" class="card"></div><div id="info"></div></aside>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
